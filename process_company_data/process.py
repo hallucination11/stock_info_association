@@ -32,6 +32,7 @@ def get_embedding(text):
 if __name__ == '__main__':
     comp_df = pd.read_csv("/Users/schencj/Desktop/hst/dataset/stock_information_association/company_intro.csv")
     comp_df['introduction'] = comp_df['introduction'].apply(lambda x: BeautifulSoup(x, "html.parser").text)
+    comp_df['embedding'] = comp_df['introduction']
     for i in tqdm(range(len(comp_df))):
         if comp_df['type'].iloc[i] == 'hk':
             prompt = f"""
@@ -42,7 +43,6 @@ if __name__ == '__main__':
             在美股市场中，{comp_df['company_name'].iloc[i]}的股票名称为{comp_df['name'].iloc[i]}, 股票代码为{comp_df['sec_code'].iloc[i]}, 简介为{comp_df['introduction'].iloc[i]}
             """
         embedding = get_embedding(prompt)
-
+        comp_df['embedding'].iloc[i] = embedding
+    comp_df.to_csv("/Users/schencj/Desktop/hst/dataset/stock_information_association/company_intro_embedding.csv", index=False)
     df = pd.read_csv('/Users/schencj/Desktop/hst/dataset/stock_information_association/tmp.csv')
-    print(df['txt_extract'])
-    print(df['embedding'])
