@@ -9,4 +9,4 @@ select A.sec_code, A.name_cn, A.name_en, B.company_name_cn, B.company_name_en, B
 """
 cursor.execute(query_us_company)
 result_us_company = cursor.fetchall()
-print(result)
+print(result_us_company)
