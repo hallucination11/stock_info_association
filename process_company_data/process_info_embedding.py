@@ -44,5 +44,5 @@ if __name__ == '__main__':
             """
         embedding = get_embedding(prompt)
         comp_df['embedding'].iloc[i] = embedding
-    comp_df.to_csv("/Users/schencj/Desktop/hst/dataset/stock_information_association/company_intro_embedding.csv", index=False)
-    df = pd.read_csv('/Users/schencj/Desktop/hst/dataset/stock_information_association/tmp.csv')
+    comp_df.to_csv("/Users/schencj/Desktop/hst/dataset/stock_information_association/company_intro_embedding.csv", index=False, float_format='%.8f')
+    # df = pd.read_csv('/Users/schencj/Desktop/hst/dataset/stock_information_association/tmp.csv')
